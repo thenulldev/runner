@@ -20,7 +20,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  publish-null-api:
+  publish-null-runner:
     runs-on: self-hosted
     steps:
       - name: Checkout repository
@@ -32,7 +32,7 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build the null-api Docker image
+      - name: Build the null-runner Docker image
         run: |
             docker build . --tag ghcr.io/thenulldev/null-runner:latest
             docker run ghcr.io/thenulldev/null-runner:latest
